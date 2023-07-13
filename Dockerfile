@@ -1,13 +1,9 @@
-FROM debian:stable-slim
-MAINTAINER RAVIHARAV
-RUN echo RAVIHARAV
+FROM ubuntu:jammy
 COPY . .
-COPY requirements.txt .
 
-# If you want to run any other commands use "RUN" before.
-
-RUN apt update > aptud.log && apt install -y wget python3 python3-pip p7zip-full > apti.log
-RUN python3 -m pip install --no-cache-dir -r requirements.txt > pip.log
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip python3 python3-pip git python3-pip p7zip
+RUN mv config.yml.default config.yml
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN wget https://zipproth.de/Brainfish/Cerebellum_Light_3Merge_200916.7z -O Cerebellum.7z
 RUN 7zr e Cerebellum.7z && rm Cerebellum.7z
