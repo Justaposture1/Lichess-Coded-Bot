@@ -1,11 +1,10 @@
-token: "lip_LxOdszffnb7u1m35raeW"    # Lichess OAuth2 Token.
+token: "lip_WaU9WgKJOD0iOgUZtafu"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"                  # Directory containing engines, relative to this project.
   name: "stockfish_x64_modern"    # Binary name of the engine to use.
   sfname: "stockfish"
-  antiname: "fsf"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
@@ -13,26 +12,6 @@ engine:                      # Engine settings.
     book:
       standard:              # List of book file paths for variant standard.
         - Goi5.1.bin
-        - Drawkiller_EloZoom_big.bin
-        - Goi5.1.bin
-        - Perfect2021.bin
-        - tcec.bin
-        - komodo.bin
-        - elo3300.bin
-        - Cerebellum3Merge.bin
-      atomic: # list of book file paths for variant atomic
-        - atomic.bin
-#      etc.
-      antichess:
-        - antichess.bin
-      horde:
-        - horde.bin
-      racingkings:
-        - racingKings.bin
-      3check:
-        - threeCheck.bin
-      kingofthehill:
-        - kingofthehill.bin
 #      use the same pattern for giveaway, crazyhouse, horde, kingofthehill, racingkings, 3check as well
       min_weight: 100          # selects move with highest weight but not below this value
       selection: "best_move" # move slection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in 2. and 3. case)
@@ -41,19 +20,17 @@ engine:                      # Engine settings.
 #   cpuct: 3.1
   uci_options:               # arbitrary UCI options passed to the engine
  
-option name Contempt type spin : 24
-option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 20
-option name Hash type spin : 32768
+option name Threads type spin : 8
+option name Hash type spin : 512
 option name Ponder type check : true
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
-option name Move Overhead type spin : 5000
+option name Move Overhead type spin : 100
 option name nodestime type spin : 0
 option name UCI_Chess960 type check : false
 option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
-option name UCI_Elo type spin : 2850
+option name UCI_Elo type spin : 3190
 option name UCI_ShowWDL type check : false
 option name SyzygyPath type string : <empty>
 option name SyzygyProbeDepth type spin : 100
@@ -85,22 +62,23 @@ challenge:                   # incoming challenges
   max_increment: 180         # maximum amount of increment to accaept a challenge. the max is 180. set to 0 for no increment
   min_increment: 0           # minimum amount of increment to accept a challenge
   variants:                  # chess variants to accept (http://lichess.org/variant)
+  variants:                               # Chess variants to accept (https://lichess.org/variant).
     - standard
-#   - fromPosition
-    - antichess
-    - atomic
     - chess960
-    - crazyhouse
-    - horde
-    - kingOfTheHill
-    - racingKings
-    - threeCheck
+#   - fromPosition
+#   - antichess
+#   - atomic
+#   - crazyhouse
+#   - horde
+#   - kingOfTheHill
+#   - racingKings
+#   - threeCheck
   time_controls:             # time controls to accept
     - bullet
     - blitz
     - rapid
-    - classical
-    - correspondence
+#   - classical
+#   - correspondence
   modes:                     # game modes to accept
     - casual                 # unrated games
     - rated                  # rated games - must comment if the engine doesn't try to win
