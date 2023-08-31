@@ -24,7 +24,7 @@ cd Stockfish-master/src
 if [ "$(g++ -Q -march=native --help=target | grep mbmi2 | grep enabled)" ] ; then
   make profile-build ARCH=x86-64-bmi2 COMP=gcc
   strip stockfish
-  mv stockfish ../../stockfish_x64_modern
+  mv stockfish ../../stockfish_x64_bmi2
   make clean
 fi
 
