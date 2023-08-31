@@ -1,14 +1,14 @@
-token: "lip_WaU9WgKJOD0iOgUZtafu"    # Lichess OAuth2 Token.
+token: "lip_Q4ZL5VNYjK7PrnI0Ll14"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"                  # Directory containing engines, relative to this project.
-  name: "stockfish_x64_modern"    # Binary name of the engine to use.
+  name: "stockfish_x64_bmi2"    # Binary name of the engine to use.
   sfname: "stockfish"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
-    enabled: true           # Activate polyglot book.
+    enabled: false           # Activate polyglot book.
     book:
       standard:              # List of book file paths for variant standard.
         - Goi5.1.bin
@@ -20,8 +20,8 @@ engine:                      # Engine settings.
 #   cpuct: 3.1
   uci_options:               # arbitrary UCI options passed to the engine
  
-option name Threads type spin : 8
-option name Hash type spin : 512
+option name Threads type spin : 24
+option name Hash type spin : 20000
 option name Ponder type check : true
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
